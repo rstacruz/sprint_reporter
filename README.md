@@ -4,7 +4,7 @@
 
 ## Thanks
 
-**jira-reporter** © 2017+, Rico Sta. Cruz. Released under the [MIT] License.<br>
+**sprint_reporter** © 2017, Rico Sta. Cruz. Released under the [MIT] License.<br>
 Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
 
 > [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
