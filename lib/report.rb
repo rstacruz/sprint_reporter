@@ -3,8 +3,8 @@ require 'csv'
 module JiraParser
   module_function
 
-  def get_items
-    map_rows CSV.foreach('./JIRA.csv', headers: true)
+  def get_items(filename)
+    map_rows CSV.foreach(filename, headers: true)
   end
 
   def map_rows(enumerator)
@@ -31,11 +31,17 @@ class Renderer
   end
 
   def render
-    require 'yaml'
-    YAML.dump(@items)
+    @items.map do |item|
+      render_item(item)
+    end.join("\n")
+  end
+
+  def render_item(item)
+    url = "https://#{@domain}/browse/#{item[:key]}"
+    "- [`#{item[:key]}`](#{url}) #{item[:title]}"
   end
 end
 
-items = JiraParser.get_items
+items = JiraParser.get_items('./JIRA.csv')
 output = Renderer.new(items, domain: 'foo.atlassian.net').render
 puts output
