@@ -1,4 +1,4 @@
 module SprintReporter
-  require_relative './jira_parser'
-  require_relative './markdown_renderer'
+  require_relative './sprint_reporter/jira_parser'
+  require_relative './sprint_reporter/markdown_renderer'
 end
