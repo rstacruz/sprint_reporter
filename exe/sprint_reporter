@@ -1,7 +1,39 @@
 #!/usr/bin/env ruby
 
+require 'optparse'
+
+options = {
+  domain: 'myproject.atlassian.net'
+}
+
+OptionParser.new do |opts|
+  opts.banner = <<~END
+  Usage: sprint_reporter -j <JIRA.csv>
+                         [-e <EPICS.yml>]
+                         [-d <foo.atlassian.net>]
+
+  Reads commands from FILE and outputs results.
+
+  END
+
+  opts.on('-j', '--jira <FILE.csv>', 'Load Jira CSV') do |v|
+    options[:jira] = v
+  end
+  opts.on('-e', '--epics <FILE.yml>', 'Load this list of epics') do |v|
+    options[:epics] = v
+  end
+  opts.on('-d', '--domain <foo.atlassian.net>', 'Use this domain') do |v|
+    options[:domain] = v
+  end
+end.parse!
+
 require_relative '../lib/sprint_reporter'
 
-items = SprintReporter::JiraParser.get_items('./JIRA.csv')
-output = SprintReporter::MarkdownRenderer.new(items, domain: 'foo.atlassian.net').render
+items = []
+
+if options[:jira]
+  items += SprintReporter::JiraParser.get_items(options[:jira])
+end
+
+output = SprintReporter::MarkdownRenderer.new(items, domain: options[:domain]).render
 puts output
