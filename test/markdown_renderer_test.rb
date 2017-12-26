@@ -26,21 +26,32 @@ describe 'MarkdownRenderer' do
     expect(output.strip).must_equal <<~END.strip
       ## Blogging
 
+      ##### New and updated:
+
       - [`PR-14`](https://foo.atlassian.net/browse/PR-14) Write posts
       - [`PR-15`](https://foo.atlassian.net/browse/PR-15) Make comments
 
       ## User management
 
+      ##### New and updated:
+
       - [`PR-13`](https://foo.atlassian.net/browse/PR-13) **Sign out**
       - [`PR-12`](https://foo.atlassian.net/browse/PR-12) Sign up
+
+      ##### Fixed:
+
       - [`PR-17`](https://foo.atlassian.net/browse/PR-17) Log in not working
 
       ## PR-4
+
+      ##### New and updated:
 
       - [`PR-18`](https://foo.atlassian.net/browse/PR-18) Podcast download
       - [`PR-19`](https://foo.atlassian.net/browse/PR-19) Podcast listen
 
       ## Other
+
+      ##### New and updated:
 
       - [`PR-16`](https://foo.atlassian.net/browse/PR-16) Deployment
     END
@@ -56,21 +67,32 @@ describe 'MarkdownRenderer' do
     expect(output.strip).must_equal <<~END.strip
       ## PR-2
 
+      ##### New and updated:
+
       - [`PR-13`](https://foo.atlassian.net/browse/PR-13) **Sign out**
       - [`PR-12`](https://foo.atlassian.net/browse/PR-12) Sign up
+
+      ##### Fixed:
+
       - [`PR-17`](https://foo.atlassian.net/browse/PR-17) Log in not working
 
       ## PR-3
+
+      ##### New and updated:
 
       - [`PR-14`](https://foo.atlassian.net/browse/PR-14) Write posts
       - [`PR-15`](https://foo.atlassian.net/browse/PR-15) Make comments
 
       ## PR-4
 
+      ##### New and updated:
+
       - [`PR-18`](https://foo.atlassian.net/browse/PR-18) Podcast download
       - [`PR-19`](https://foo.atlassian.net/browse/PR-19) Podcast listen
 
       ## Other
+
+      ##### New and updated:
 
       - [`PR-16`](https://foo.atlassian.net/browse/PR-16) Deployment
     END
