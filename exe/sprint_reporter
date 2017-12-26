@@ -6,7 +6,7 @@ options = {
   domain: 'myproject.atlassian.net'
 }
 
-OptionParser.new do |opts|
+op = OptionParser.new do |opts|
   opts.banner = <<~END
   Usage: sprint_reporter -j <JIRA.csv>
                          [-e <EPICS.yml>]
@@ -25,7 +25,13 @@ OptionParser.new do |opts|
   opts.on('-d', '--domain <foo.atlassian.net>', 'Use this domain') do |v|
     options[:domain] = v
   end
-end.parse!
+end
+op.parse!
+
+if !options[:jira]
+  puts op.help
+  exit 16
+end
 
 require_relative '../lib/sprint_reporter'
 
