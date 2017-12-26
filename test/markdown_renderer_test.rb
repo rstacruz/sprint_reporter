@@ -1,24 +1,22 @@
 require 'test_helper'
 
 describe 'MarkdownRenderer' do
+  let :fixture_path do
+    File.expand_path('../../example/JIRA.csv', __FILE__)
+  end
+
+  let :items do
+    SprintReporter::JiraParser.get_items(fixture_path)
+  end
+
+
+  let :epics do
+    YAML.load_file(
+      File.expand_path('../../example/epics.yml', __FILE__)
+    )
+  end
+
   it 'works with epics' do
-    items = [
-      { key: 'PR-12', type: 'Feature', title: 'Sign up', epic: 'PR-2' },
-      { key: 'PR-13', type: 'Feature', title: 'Sign out', epic: 'PR-2' },
-      { key: 'PR-14', type: 'Feature', title: 'Write posts', epic: 'PR-3' },
-      { key: 'PR-16', type: 'Feature', title: 'Deployment', epic: nil },
-      { key: 'PR-15', type: 'Feature', title: 'Make comments', epic: 'PR-3' },
-      { key: 'PR-17', type: 'Bug', title: 'Log in not working', epic: 'PR-2' },
-      { key: 'PR-18', type: 'Feature', title: 'Podcast download', epic: 'PR-4' },
-      { key: 'PR-19', type: 'Feature', title: 'Podcast listen', epic: 'PR-4' },
-    ]
-
-    epics = {
-      'PR-3' => 'Blogging',
-      'PR-2' => 'User management',
-      'PR-1' => 'Not supposed to be here'
-    }
-
     output = SprintReporter::MarkdownRenderer.new(
       items,
       domain: 'foo.atlassian.net',
@@ -49,17 +47,6 @@ describe 'MarkdownRenderer' do
   end
 
   it 'works without epics' do
-    items = [
-      { key: 'PR-12', type: 'Feature', title: 'Sign up', epic: 'PR-2' },
-      { key: 'PR-13', type: 'Feature', title: 'Sign out', epic: 'PR-2' },
-      { key: 'PR-14', type: 'Feature', title: 'Write posts', epic: 'PR-3' },
-      { key: 'PR-16', type: 'Feature', title: 'Deployment', epic: nil },
-      { key: 'PR-15', type: 'Feature', title: 'Make comments', epic: 'PR-3' },
-      { key: 'PR-17', type: 'Bug', title: 'Log in not working', epic: 'PR-2' },
-      { key: 'PR-18', type: 'Feature', title: 'Podcast download', epic: 'PR-4' },
-      { key: 'PR-19', type: 'Feature', title: 'Podcast listen', epic: 'PR-4' },
-    ]
-
     output = SprintReporter::MarkdownRenderer.new(
       items,
       domain: 'foo.atlassian.net',
