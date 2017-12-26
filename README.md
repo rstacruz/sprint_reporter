@@ -2,7 +2,11 @@
 
 > Eats Jira CSV's and makes pretty Markdown
 
+[![Status](https://travis-ci.org/rstacruz/sprint_reporter.svg?branch=master)](https://travis-ci.org/rstacruz/sprint_reporter "See test builds")
+
 Creates Markdown-formatted report of a Jira sprint's completed features.
+
+## Example
 
 > <img src='https://user-images.githubusercontent.com/74385/34355860-77fc90ae-ea73-11e7-8fec-7405cd0fd4a1.png' width='300'>
 
