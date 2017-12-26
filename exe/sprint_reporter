@@ -36,10 +36,20 @@ end
 require_relative '../lib/sprint_reporter'
 
 items = []
+epics = nil
 
 if options[:jira]
   items += SprintReporter::JiraParser.get_items(options[:jira])
 end
 
-output = SprintReporter::MarkdownRenderer.new(items, domain: options[:domain]).render
+if options[:epics]
+  require 'yaml'
+  epics = YAML.safe_load(options[:epics])
+end
+
+output = SprintReporter::MarkdownRenderer.new(
+  items,
+  domain: options[:domain],
+  epics: epics
+).render
 puts output

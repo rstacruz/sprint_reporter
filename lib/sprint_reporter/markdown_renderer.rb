@@ -1,8 +1,9 @@
 module SprintReporter
   class MarkdownRenderer
-    def initialize(items, domain:)
+    def initialize(items, domain:, epics: nil)
       @items = items
       @domain = domain
+      @epics = epics
     end
 
     def render
@@ -25,7 +26,11 @@ module SprintReporter
     end
 
     def render_epic_heading(epic)
-      "## #{epic}"
+      if epic
+        "## #{epic}"
+      else
+        "## Other"
+      end
     end
 
     def render_items(items)
