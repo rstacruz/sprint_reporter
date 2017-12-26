@@ -19,7 +19,8 @@ describe 'Jira Parser' do
       key: 'PR-12',
       type: 'Feature',
       status: 'Closed',
-      epic: 'PR-2'
+      epic: 'PR-2',
+      priority: 'Medium'
     )
   end
 end

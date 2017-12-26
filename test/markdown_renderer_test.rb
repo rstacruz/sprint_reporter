@@ -31,8 +31,8 @@ describe 'MarkdownRenderer' do
 
       ## User management
 
+      - [`PR-13`](https://foo.atlassian.net/browse/PR-13) **Sign out**
       - [`PR-12`](https://foo.atlassian.net/browse/PR-12) Sign up
-      - [`PR-13`](https://foo.atlassian.net/browse/PR-13) Sign out
       - [`PR-17`](https://foo.atlassian.net/browse/PR-17) Log in not working
 
       ## PR-4
@@ -56,8 +56,8 @@ describe 'MarkdownRenderer' do
     expect(output.strip).must_equal <<~END.strip
       ## PR-2
 
+      - [`PR-13`](https://foo.atlassian.net/browse/PR-13) **Sign out**
       - [`PR-12`](https://foo.atlassian.net/browse/PR-12) Sign up
-      - [`PR-13`](https://foo.atlassian.net/browse/PR-13) Sign out
       - [`PR-17`](https://foo.atlassian.net/browse/PR-17) Log in not working
 
       ## PR-3

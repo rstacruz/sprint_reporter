@@ -1,5 +1,13 @@
 module SprintReporter
   class MarkdownRenderer
+    PRIORITIES = {
+      'Highest' => 5,
+      'High' => 4,
+      'Medium' => 3,
+      'Low' => 2,
+      'Lowest' => 1
+    }
+
     def initialize(items, domain:, epics: nil)
       @items = items
       @domain = domain
@@ -44,12 +52,37 @@ module SprintReporter
     end
 
     def render_items(items)
-      items.map { |it| render_item(it) }.join("\n")
+      items
+        .sort_by { |item| [ get_priority_index(item) ] }
+        .map { |item| render_item(item) }.join("\n")
     end
 
     def render_item(item)
       url = "https://#{@domain}/browse/#{item[:key]}"
-      "- [`#{item[:key]}`](#{url}) #{item[:title]}"
+      title = item[:title]
+      key = item[:key]
+
+      # Bold the high priority items.
+      title = "**#{title}**" if is_highest_priority?(item)
+
+      # Render as Markdown
+      "- [`#{key}`](#{url}) #{title}"
+    end
+
+    private
+
+    # Returns a number for a given item's priority.
+    #
+    #     get_priority_index(item)
+    #     # => -5...0
+    #
+    def get_priority_index(item)
+      -(PRIORITIES[item && item[:priority]] || 0)
+    end
+
+    # Checks if the priority of the given +item+ is +'Highest'+.
+    def is_highest_priority?(item)
+      item && item[:priority] == 'Highest'
     end
   end
 end

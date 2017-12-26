@@ -21,6 +21,7 @@ module SprintReporter
         type: row['Issue Type'], # => 'Bug'
         status: row['Status'], # => 'Closed'
         epic: row['Custom field (Epic Link)'], # => 'PROJ-111'
+        priority: row['Priority'] # => 'Highest'
       }
     end
   end
