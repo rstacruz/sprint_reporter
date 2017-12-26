@@ -6,6 +6,34 @@ Creates Markdown-formatted report of a Jira sprint's completed features.
 
 > <img src='https://user-images.githubusercontent.com/74385/34355860-77fc90ae-ea73-11e7-8fec-7405cd0fd4a1.png' width='300'>
 
+## Installation
+
+This gem isn't published on rubygems.org, so you'll need to do either one of these things.
+
+- **Install as a system gem:**
+
+  ```sh
+  git clone https://github.com/rstacruz/sprint_reporter.git
+  cd sprint_reporter
+  bundle
+  bundle exec rake install
+  ```
+
+  ```sh
+  sprint_reporter --help
+  ```
+
+- **Install as a project gem:**
+
+  ```rb
+  # Gemfile
+  gem 'sprint_reporter', github: 'rstacruz/sprint_reporter', require: false
+  ```
+
+  ```sh
+  bundle exec sprint_reporter --help
+  ```
+
 ## Usage
 
 - In Jira, go to **Reports** → **Sprint Report**. Then click **View in Issue Navigator**.
