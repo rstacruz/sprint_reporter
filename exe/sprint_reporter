@@ -44,7 +44,7 @@ end
 
 if options[:epics]
   require 'yaml'
-  epics = YAML.safe_load(options[:epics])
+  epics = YAML.load_file(options[:epics])
 end
 
 output = SprintReporter::MarkdownRenderer.new(
