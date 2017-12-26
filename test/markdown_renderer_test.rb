@@ -15,7 +15,8 @@ describe 'MarkdownRenderer' do
 
     epics = {
       'PR-3' => 'Blogging',
-      'PR-2' => 'User management'
+      'PR-2' => 'User management',
+      'PR-1' => 'Not supposed to be here'
     }
 
     output = SprintReporter::MarkdownRenderer.new(

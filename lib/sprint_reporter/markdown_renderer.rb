@@ -22,8 +22,8 @@ module SprintReporter
 
       keys.map do |epic|
         items = epics[epic]
-        render_epic(epic, items)
-      end.join("\n\n")
+        render_epic(epic, items) if items
+      end.compact.join("\n\n")
     end
 
     def render_epic(epic, items)
