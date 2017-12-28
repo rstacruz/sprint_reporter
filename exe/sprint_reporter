@@ -25,6 +25,9 @@ op = OptionParser.new do |opts|
   opts.on('-d', '--domain <foo.atlassian.net>', 'Use this domain') do |v|
     options[:domain] = v
   end
+  opts.on('-h', '--html', 'Enable HTML tags') do |v|
+    options[:html] = v
+  end
 end
 op.parse!
 
@@ -50,6 +53,7 @@ end
 output = SprintReporter::MarkdownRenderer.new(
   items,
   domain: options[:domain],
-  epics: epics
+  epics: epics,
+  html: options[:html]
 ).render
 puts output

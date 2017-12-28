@@ -10,14 +10,23 @@ module SprintReporter
 
     TYPE_INDICES = {
       'Feature' => -3,
+      'Story' => -3,
       'Bug' => -2,
       'Task' => -1
     }
 
-    def initialize(items, domain:, epics: nil)
+    TYPE_HEADINGS = {
+      'Feature' => 'New and updated',
+      'Story' => 'New and updated',
+      'Bug' => 'Fixed',
+      'Task' => 'Done'
+    }
+
+    def initialize(items, domain:, epics: nil, html: false)
       @items = items
       @domain = domain
       @epics = epics
+      @html = html
     end
 
     def render
@@ -73,11 +82,7 @@ module SprintReporter
     end
 
     def render_type_heading(type)
-      case type
-      when "Feature" then "New and updated"
-      when "Bug" then "Fixed"
-      else type
-      end
+      TYPE_HEADINGS[type] || type
     end
 
     def render_item(item)
@@ -89,7 +94,11 @@ module SprintReporter
       title = "**#{title}**" if is_highest_priority?(item)
 
       # Render as Markdown
-      "- [`#{key}`](#{url}) #{title}"
+      if @html
+      "- <small>[`#{key}`](#{url})</small> #{title}"
+      else
+        "- [`#{key}`](#{url}) #{title}"
+      end
     end
 
     private
