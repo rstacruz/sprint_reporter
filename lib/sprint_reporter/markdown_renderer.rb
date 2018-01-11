@@ -93,6 +93,9 @@ module SprintReporter
       # Bold the high priority items.
       title = "**#{title}**" if is_highest_priority?(item)
 
+      links = render_links(item)
+      title = "#{title} #{links}" if links
+
       # Render as Markdown
       if @html
       "- <small>[`#{key}`](#{url})</small> #{title}"
@@ -100,6 +103,24 @@ module SprintReporter
         "- [`#{key}`](#{url}) #{title}"
       end
     end
+
+    def render_links(item)
+      links = item[:links] || []
+      return unless links.length != 0
+
+      htmls = links.map do |link|
+        url = link[:url]
+        host = link[:host]
+        if @html
+          "<sub>[#{host}](#{url})</sub>"
+        else
+          "- [#{host}](#{url})"
+        end
+      end
+
+      htmls.join(' ')
+    end
+
 
     private
 
