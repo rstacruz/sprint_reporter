@@ -112,13 +112,19 @@ module SprintReporter
         url = link[:url]
         host = link[:host]
         if @html
-          "<sub>[#{host}](#{url})</sub>"
+          "<sub>[(#{host})](#{url})</sub>"
         else
-          "- [#{host}](#{url})"
+          "[(#{host})](#{url})"
         end
       end
 
-      htmls.join(' ')
+      htmls = htmls.join(' ')
+
+      if @html
+        htmls
+      else
+        "- #{htmls}"
+      end
     end
 
 
