@@ -47,7 +47,7 @@ describe 'MarkdownRenderer' do
       ##### New and updated:
 
       - [`PR-18`](https://foo.atlassian.net/browse/PR-18) Podcast download
-      - [`PR-19`](https://foo.atlassian.net/browse/PR-19) Podcast listen - [trello.com](https://trello.com/card/foobar)
+      - [`PR-19`](https://foo.atlassian.net/browse/PR-19) Podcast listen - [(trello.com)](https://trello.com/card/foobar)
 
       ## Other
 
@@ -88,7 +88,7 @@ describe 'MarkdownRenderer' do
       ##### New and updated:
 
       - [`PR-18`](https://foo.atlassian.net/browse/PR-18) Podcast download
-      - [`PR-19`](https://foo.atlassian.net/browse/PR-19) Podcast listen - [trello.com](https://trello.com/card/foobar)
+      - [`PR-19`](https://foo.atlassian.net/browse/PR-19) Podcast listen - [(trello.com)](https://trello.com/card/foobar)
 
       ## Other
 
